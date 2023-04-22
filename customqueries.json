@@ -9,7 +9,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List All users with lastlogon '0'",
             "queryList": [
                 {
@@ -17,8 +17,8 @@
 				"query": "MATCH (u:User) where u.lastlogon =0 Return u"
                 }
             ]
-        }
-		{
+        },
+	{
             "name": "List all Objects with GenericAll",
             "queryList": [
                 {
@@ -27,7 +27,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List all Objects with WriteDacl",
             "queryList": [
                 {
@@ -36,7 +36,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List All users with WriteDacl permission",
             "queryList": [
                 {
@@ -45,7 +45,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List owned users with WriteDacl permission",
             "queryList": [
                 {
@@ -54,7 +54,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List All groups with WriteDacl permission",
             "queryList": [
                 {
@@ -63,7 +63,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List owned groups with WriteDacl permission",
             "queryList": [
                 {
@@ -72,7 +72,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List All users with GenericAll permission",
             "queryList": [
                 {
@@ -81,7 +81,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List owned users with GenericAll permission",
             "queryList": [
                 {
@@ -90,7 +90,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List All groups with GenericAll permission",
             "queryList": [
                 {
@@ -99,7 +99,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List owned groups with GenericAll permission",
             "queryList": [
                 {
@@ -108,7 +108,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List All users with GenericWrite permission",
             "queryList": [
                 {
@@ -117,7 +117,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List owned users with GenericWrite permission",
             "queryList": [
                 {
@@ -126,7 +126,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List All groups with GenericWrite permission",
             "queryList": [
                 {
@@ -135,7 +135,7 @@
                 }
             ]
         },
-		{
+	{
             "name": "List owned groups with GenericWrite permission",
             "queryList": [
                 {
