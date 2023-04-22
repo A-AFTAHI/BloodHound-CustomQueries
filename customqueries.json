@@ -1,0 +1,163 @@
+{
+    "queries": [
+		{
+            "name": "List Users with 'Pass' key word in the description",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u:User) where u.description =~ '(?i).*pass*' Return u"
+                }
+            ]
+        },
+		{
+            "name": "List All users with lastlogon '0'",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u:User) where u.lastlogon =0 Return u"
+                }
+            ]
+        }
+		{
+            "name": "List all Objects with GenericAll",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u)-[:GenericAll]->(m) Return u"
+                }
+            ]
+        },
+		{
+            "name": "List all Objects with WriteDacl",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u)-[:WriteDacl]->(m) Return u"
+                }
+            ]
+        },
+		{
+            "name": "List All users with WriteDacl permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u:User)-[:WriteDacl]->(m)  Return u"
+                }
+            ]
+        },
+		{
+            "name": "List owned users with WriteDacl permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u:User {owned : true} )-[:WriteDacl]->(m)  Return u"
+                }
+            ]
+        },
+		{
+            "name": "List All groups with WriteDacl permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (g:Group)-[:WriteDacl]->(m) Return g"
+                }
+            ]
+        },
+		{
+            "name": "List owned groups with WriteDacl permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (g:Group {owned:true} )-[:WriteDacl]->(m) Return g"
+                }
+            ]
+        },
+		{
+            "name": "List All users with GenericAll permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u:User)-[:GenericAll]->(m) Return u"
+                }
+            ]
+        },
+		{
+            "name": "List owned users with GenericAll permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u:User {owned : true} )-[:GenericAll]->(m) Return u"
+                }
+            ]
+        },
+		{
+            "name": "List All groups with GenericAll permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (g:Group)-[:GenericAll]->(m) Return g"
+                }
+            ]
+        },
+		{
+            "name": "List owned groups with GenericAll permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (g:Group {owned:true} )-[:GenericAll]->(m) Return g"
+                }
+            ]
+        },
+		{
+            "name": "List All users with GenericWrite permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u:User)-[:GenericWrite]->(m) Return u"
+                }
+            ]
+        },
+		{
+            "name": "List owned users with GenericWrite permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (u:User {owned : true} )-[:GenericWrite]->(m) Return u"
+                }
+            ]
+        },
+		{
+            "name": "List All groups with GenericWrite permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (g:Group)-[:GenericWrite]->(m) Return g"
+                }
+            ]
+        },
+		{
+            "name": "List owned groups with GenericWrite permission",
+            "queryList": [
+                {
+                "final": true,
+				"query": "MATCH (g:Group {owned:true} )-[:GenericWrite]->(m) Return g"
+                }
+            ]
+        },
+        {
+            "name": "DCSync Principals not Administrators",
+            "category": "Privileged Accounts",
+            "queryList": [
+                {
+                    "final": false,
+                    "title": "Select a Domain...",
+                    "query": "MATCH (n:Domain) RETURN n.name ORDER BY n.name DESC"
+                },
+                {
+                    "final": true,
+                    "query": "MATCH (admins {domain: $result})-[r1:MemberOf*0..]->(g1:Group) WHERE (g1.objectid =~ \"(?i)S-1-5-.*-512\") OR (g1.objectid =~ \"(?i)S-1-5-.*-516\") OR (g1.objectid =~ \"(?i)S-1-5-.*-518\") OR (g1.objectid =~ \"(?i)S-1-5-.*-519\") OR (g1.objectid =~ \"(?i)S-1-5-.*-520\") OR (g1.objectid =~ \"(?i)S-1-5-.*-544\") OR (g1.objectid =~ \"(?i)S-1-5-.*-548\") OR (g1.objectid =~ \"(?i)S-1-5-.*-549\") OR (g1.objectid =~ \"(?i)S-1-5-.*-551\") WITH COLLECT(admins) AS exclude MATCH p=(n1)-[:MemberOf|GetChanges*0..]->(u:Domain {name: $result}) WHERE NOT n1 IN exclude and (n1:Computer or n1:User) RETURN p"
+                }
+            ]
+        }
+		]
+}
